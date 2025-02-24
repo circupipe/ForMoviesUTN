@@ -1,0 +1,144 @@
+  
+  .bg-shadow-1 {
+    box-shadow: 142px -12px 300px 42px var(--bg-shadow);
+  }
+  
+  .inset-shadow-1 {
+    box-shadow: inset 0px 0px 39px 3px var(--inset-shadow);
+  }
+  
+  .inset-shadow-2 {
+    box-shadow: inset 0px -54px 43px -11px var(--inset-shadow);
+  }
+  
+  /* General Styles */
+  body {
+    background-color: var(--bg-body);
+    color: var(--color-white-smoke);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Search Container */
+  .search-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .search-bar {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 10px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--color-2);
+    border-radius: 5px 0 0 5px;
+    color: var(--color-white-smoke);
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    background-color: var(--bg-card);
+    border: none;
+    border-radius: 0 5px 5px 0;
+    color: var(--color-white-smoke);
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: var(--color-1);
+    box-shadow: 20px 20px 100px 33px var(--bg-shadow);
+    transition: 0.3s;
+
+  }
+  
+  .page-info {
+    margin: 10px 0;
+    color: var(--color-3);
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .pagination-button {
+    padding: 8px 16px;
+    background-color: var(--bg-card);
+    border: none;
+    border-radius: 5px;
+    color: var(--color-white-smoke);
+    cursor: pointer;
+  }
+  
+  .pagination-button:hover {
+    background-color: var(--color-1);
+    box-shadow: 20px 20px 100px 33px var(--bg-shadow);
+    transition: 0.3s;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: var(--color-1);
+    text-align: center;
+  }
+  
+  /* Results Header */
+  .results-count {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Movies Grid */
+  .movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Movie Card */
+  .movie-card {
+    width: 200px;
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--bg-shadow);
+  }
+  
+  .movie-poster {
+    width: 100%;
+    height: auto;
+  }
+  
+  .movie-details {
+    padding: 10px;
+  }
+  
+  .movie-title {
+    font-size: 18px;
+    margin: 0;
+    color: var(--color-white-smoke);
+  }
+  
+  .movie-year,
+  .movie-id {
+    font-size: 14px;
+    color: var(--color-2);
+    margin-top: 5px;
+  }
+  

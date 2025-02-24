@@ -1,0 +1,151 @@
+.card-movie{
+    display: flex;
+    align-items: start;
+    justify-content: center ;
+    max-width: 50rem;
+    background-color:var(--bg-card);
+    border-radius: 20px;
+    margin: 1rem;
+}
+
+.poster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+    height: auto;
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+}
+
+.logos{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    gap: 1rem;
+    box-shadow: inset 0px -54px 43px -11px rgba(53,58,91,1);
+
+}
+
+.title{
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-1);
+}
+
+.rated{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    padding-block: .2rem;
+    padding-inline: .4rem;
+    border-radius: 6px;
+    border: solid 2px whitesmoke;
+    font-size: .7rem;
+    font-weight: 700;
+    color: whitesmoke;
+}
+
+.year{font-size: .8rem;}
+
+.info{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: var(--color-3);
+}
+
+.plot{
+color: var(--color-2);
+font-size: 1.4rem;
+padding-bottom: 1rem;
+}
+
+.metascore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: whitesmoke;
+    gap: 1rem;
+}
+                    /* logo imbd */
+
+.imdb{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.faimdb{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f3ce13;
+    font-size: 2.5rem;
+}
+
+                    /* logo metracritic */
+.circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(2.5rem - 4px);
+    height: calc(2.5rem - 4px);
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+    top: 0;
+    left: 0;
+    border: solid #ffcc00 4px ;
+}
+
+.m {
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    font-weight:700;
+    color: var(--color-white-smoke);
+    position: absolute;
+    transform: rotate(-45deg);
+    translate: -5% -5%;
+}
+
+                    /* logo rotten tomatoes */
+
+.tomato{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff6600;
+    font-size: 2rem;
+}
+
+                    /* animacion de loading */
+
+.loading {
+    border: 16px solid var(--inset-shadow);
+    box-shadow: 0px 00px 200px 50px var(--bg-shadow);
+    border-top: 16px solid var(--color-1);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
