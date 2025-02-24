@@ -18,6 +18,7 @@
        
 }
 
+
 .bg-shadow-1{box-shadow: 142px -12px 300px 42px var(--bg-shadow);}
 .inset-shadow-1{box-shadow: inset 0px 0px 39px 3px var(--inset-shadow);}
 .inset-shadow-2{box-shadow: inset 0px -54px 43px -11px var(--inset-shadow);}
