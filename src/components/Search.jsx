@@ -7,7 +7,7 @@ export function Search() {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [searchPushed, setSearchPushed] = useState(false);
-  const API_URL = "http://www.omdbapi.com/?apikey=bdaa3204&type=movie&s=" + query + "&page=" + page;
+  const API_URL = `http://www.omdbapi.com/?apikey=bdaa3204&type=movie&s=${query}&page=${page}`;
 
   const navigate = useNavigate();
 
@@ -37,11 +37,8 @@ export function Search() {
   };
 
   const handleMovieClick = (imdbID) => {
-    navigate("/movie/imdbID");
+    navigate(`/movie/${imdbID}`);
   };
-
-  let paginas = data.totalResults / 10;
-
 
   useEffect(() => {
     CallApi();
@@ -71,7 +68,7 @@ export function Search() {
       )}
       {data.Search && data.Search.length > 0 && (
         <>
-          <h1 className="results-count">Se encontraron {data.totalResults} películas y {paginas} paginas </h1>
+          <h1 className="results-count">Se encontraron {data.totalResults} películas</h1>
           <div className="movies-list">
             {data.Search.map((peli) => (
               <div
