@@ -10,7 +10,7 @@ export function CardMovie() {
 
   useEffect(() => {
     const fetchMovieData = async () => {
-      const API_DATA = `http://www.omdbapi.com/?apikey=bdaa3204&type=movie&i=${imdbID}`;
+      const API_DATA = "http://www.omdbapi.com/?apikey=bdaa3204&type=movie&i=" + imdbID;
       let response = await fetch(API_DATA);
       let data = await response.json();
       setMovieData(data);
