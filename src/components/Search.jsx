@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { IoIosCloseCircle } from "react-icons/io";
 import './Search.css';
-import { useNavigate } from 'react-router-dom';
+import { CardMovie } from './CardMovie';
 
 export function Search() {
   const [data, setData] = useState({});
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [searchPushed, setSearchPushed] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const API_URL = `http://www.omdbapi.com/?apikey=bdaa3204&type=movie&s=${query}&page=${page}`;
-
-  const navigate = useNavigate();
 
   const CallApi = async () => {
     if (searchPushed) {
@@ -17,18 +18,18 @@ export function Search() {
       let previousData = await response.json();
       setData(previousData);
       console.log(previousData);
-      setSearchPushed(false); 
+      setSearchPushed(false);
     }
   };
 
   const nextPage = () => {
     setPage((prevPage) => prevPage + 1);
-    setSearchPushed(true); 
+    setSearchPushed(true);
   };
 
   const prevPage = () => {
     setPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1));
-    setSearchPushed(true); 
+    setSearchPushed(true);
   };
 
   const handleSearch = () => {
@@ -36,8 +37,17 @@ export function Search() {
     setSearchPushed(true);
   };
 
-  const handleMovieClick = (imdbID) => {
-    navigate(`/movie/${imdbID}`);
+  const handleMovieClick = async (imdbID) => {
+    const API_DATA = `http://www.omdbapi.com/?apikey=bdaa3204&type=movie&i=${imdbID}`;
+    let response = await fetch(API_DATA);
+    let movieData = await response.json();
+    setSelectedMovie(movieData);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedMovie(null);
   };
 
   useEffect(() => {
@@ -86,6 +96,15 @@ export function Search() {
             ))}
           </div>
         </>
+      )}
+
+      {isModalOpen && selectedMovie && (
+        <div className="modal">
+          <div className="modal-content">
+            <button onClick={closeModal} className="close-button"><IoIosCloseCircle /></button>
+            <CardMovie movieData={selectedMovie} />
+          </div>
+        </div>
       )}
     </>
   );

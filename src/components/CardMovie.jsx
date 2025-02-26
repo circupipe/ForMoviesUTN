@@ -1,28 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { FaImdb } from 'react-icons/fa';
 import { SiRottentomatoes } from 'react-icons/si';
 import './CardMovie.css';
 
-export function CardMovie() {
-  const { imdbID } = useParams();
-  const [movieData, setMovieData] = useState(null);
-
-  useEffect(() => {
-    const fetchMovieData = async () => {
-      const API_DATA = `http://www.omdbapi.com/?apikey=bdaa3204&type=movie&i=${imdbID}`;
-      let response = await fetch(API_DATA);
-      let data = await response.json();
-      setMovieData(data);
-      console.log(data);
-    };
-
-    fetchMovieData();
-  }, [imdbID]);
-
+export function CardMovie({ movieData }) {
   if (!movieData) {
     return <div className="loading"></div>;
   }
+  console.log(movieData);
 
   return (
     <article className="card-movie bg-shadow-1">

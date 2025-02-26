@@ -1,0 +1,220 @@
+// este es el app
+
+// import React from 'react';
+// import { Routes, Route } from 'react-router-dom';
+
+// import { Search } from './components/Search';
+// import { CardMovie } from './components/CardMovie';
+// import './library.css';
+// import { Header } from './components/Header';
+
+// function App() {
+//   return (
+//     <>
+//     <Header />
+      
+//         <Routes>
+//           <Route path="/" element={<Search />} />
+//           <Route path="/movie/:imdbID" element={<CardMovie />} />
+//         </Routes>
+
+//     </>
+//   );
+// }
+
+// export default App;
+
+
+// este es el header
+
+// import React from 'react';
+// import './Header.css';
+
+
+// export function Header() {
+//   return (
+//     <header>
+//         <h1>forMovies</h1>
+//         <nav>
+//             <a href="#inicio">Inicio</a>
+//             <a href="#sobre">Sobre</a>
+//             <a href="#servicios">Servicios</a>
+//             <a href="#contacto">Contacto</a>
+//         </nav>
+//     </header>
+//   )
+// }
+
+
+
+
+// este es el search
+
+
+// import React, { useState, useEffect } from 'react';
+// import './Search.css';
+// import { useNavigate } from 'react-router-dom';
+
+// export function Search() {
+//   const [data, setData] = useState({});
+//   const [query, setQuery] = useState('');
+//   const [page, setPage] = useState(1);
+//   const [searchPushed, setSearchPushed] = useState(false);
+//   const API_URL = `http://www.omdbapi.com/?apikey=bdaa3204&type=movie&s=${query}&page=${page}`;
+
+//   const navigate = useNavigate();
+
+//   const CallApi = async () => {
+//     if (searchPushed) {
+//       let response = await fetch(API_URL);
+//       let previousData = await response.json();
+//       setData(previousData);
+//       console.log(previousData);
+//       setSearchPushed(false); 
+//     }
+//   };
+
+//   const nextPage = () => {
+//     setPage((prevPage) => prevPage + 1);
+//     setSearchPushed(true); 
+//   };
+
+//   const prevPage = () => {
+//     setPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1));
+//     setSearchPushed(true); 
+//   };
+
+//   const handleSearch = () => {
+//     setPage(1);
+//     setSearchPushed(true);
+//   };
+
+//   const handleMovieClick = (imdbID) => {
+//     navigate(`/movie/${imdbID}`);
+//   };
+
+//   useEffect(() => {
+//     CallApi();
+//   }, [page, searchPushed]);
+
+//   return (
+//     <>
+//       <div className="search-container">
+//         <div className="search-bar">
+//           <input
+//             type="text"
+//             placeholder="Buscar pelis"
+//             onChange={(e) => setQuery(e.target.value)}
+//             className="search-input"
+//           />
+//           <button onClick={handleSearch} className="search-button">Buscar</button>
+//         </div>
+//         <p className="page-info">Página {page}</p>
+//         <div className="pagination">
+//           <button onClick={prevPage} className="pagination-button">Anterior</button>
+//           <button onClick={nextPage} className="pagination-button">Siguiente</button>
+//         </div>
+//       </div>
+
+//       {data.Response === 'False' && (
+//         <h1 className="error-message">{query} no existe, vuelve a intentarlo por favor</h1>
+//       )}
+//       {data.Search && data.Search.length > 0 && (
+//         <>
+//           <h1 className="results-count">Se encontraron {data.totalResults} películas</h1>
+//           <div className="movies-list">
+//             {data.Search.map((peli) => (
+//               <div
+//                 key={peli.imdbID}
+//                 className="movie-card"
+//                 onClick={() => handleMovieClick(peli.imdbID)}
+//               >
+//                 <img src={peli.Poster} alt={peli.Title} className="movie-poster" />
+//                 <div className="movie-details">
+//                   <h2 className="movie-title">{peli.Title}</h2>
+//                   <h3 className="movie-year">Año: {peli.Year}</h3>
+//                   <h3 className="movie-id">ID: {peli.imdbID}</h3>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </>
+//       )}
+//     </>
+//   );
+// }
+
+
+// y este es el cardmovie 
+
+// import { useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import { FaImdb } from 'react-icons/fa';
+// import { SiRottentomatoes } from 'react-icons/si';
+// import './CardMovie.css';
+
+// export function CardMovie() {
+//   const { imdbID } = useParams();
+//   const [movieData, setMovieData] = useState(null);
+
+//   useEffect(() => {
+//     const fetchMovieData = async () => {
+//       const API_DATA = `http://www.omdbapi.com/?apikey=bdaa3204&type=movie&i=${imdbID}`;
+//       let response = await fetch(API_DATA);
+//       let data = await response.json();
+//       setMovieData(data);
+//       console.log(data);
+//     };
+
+//     fetchMovieData();
+//   }, [imdbID]);
+
+//   if (!movieData) {
+//     return <div className="loading"></div>;
+//   }
+
+//   return (
+//     <article className="card-movie bg-shadow-1">
+//       <div className="poster">
+//         <img src={movieData.Poster} alt={movieData.Title} />
+//         <div className="logos">
+//           <p className="imdb">
+//             <FaImdb className="faimdb" /> {movieData.imdbRating}
+//           </p>
+//           {movieData.Ratings[2] && movieData.Ratings[2].Value && (
+//             <div className="imdb">
+//               <div className="circle">
+//                 <p className="m">m</p>
+//               </div>
+//               <p>{movieData.Ratings[2].Value}</p>
+//             </div>
+//           )}
+//           <div>
+//             {movieData.Ratings[1] && movieData.Ratings[1].Value && (
+//               <p className="imdb">
+//                 <SiRottentomatoes className="tomato" /> {movieData.Ratings[1].Value}
+//               </p>
+//             )}
+//           </div>
+//         </div>
+//       </div>
+//       <div className="info">
+//         <h1 className="title">{movieData.Title}</h1>
+//         <div className="rated-year">
+//           <p className="rated">{movieData.Rated}</p>
+//           <span className="year">Año: {movieData.Year}</span>
+//         </div>
+//         <p className="plot">{movieData.Plot}</p>
+//         <p className="padding-bottom-05">Género: {movieData.Genre}</p>
+//         <p className="padding-bottom-05">Actores: {movieData.Actors}</p>
+//         <p className="padding-bottom-05">Duración: {movieData.Runtime}</p>
+//         <p className="padding-bottom-05">Director: {movieData.Director}</p>
+//         <p className="padding-bottom-05">Premios: {movieData.Awards}</p>
+//         <p className="padding-bottom-05">Recaudación: {movieData.BoxOffice}</p>
+//         <p className="padding-bottom-05">País: {movieData.Country}</p>
+//         <p className="padding-bottom-05">Fecha de lanzamiento: {movieData.Released}</p>
+//         <p className="padding-bottom-05">Idioma: {movieData.Language}</p>
+//       </div>
+//     </article>
+//   );
+// }

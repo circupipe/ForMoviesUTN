@@ -29,6 +29,7 @@ body{
     justify-content: center;
     background-color: var(--bg-body);
     color: var(--color-white-smoke);
+    padding-inline: 10%;
   }
 
 .padding-bottom-05{padding-bottom: .5rem;}
