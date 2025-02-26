@@ -27,3 +27,11 @@ nav a:hover {
 nav a:active {
   color: var(--color-3);
 }
+
+.formovies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  color: var(--color-3);
+}

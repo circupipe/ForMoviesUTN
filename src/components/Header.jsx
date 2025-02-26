@@ -4,7 +4,11 @@ import './Header.css';
 export function Header() {
   return (
     <header>
-        <h1>forMovies</h1>
+        <div className="formovies">
+          <h1>forMovies </h1>
+          <p>Tus peliculas en bucle.</p>
+        </div>
+        
         <nav>
             <a href="/">Inicio</a>
             <a href="#sobre">Estrenos</a>
